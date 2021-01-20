@@ -1,0 +1,25 @@
+{
+  "name": "moleculer-explorer-cli",
+  "version": "1.0.0",
+  "description": "A command line utility for monitor moleculer events.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dan Kirkham",
+  "license": "MIT",
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "moleculer": "^0.14.12",
+    "mqtt": "^4.2.6",
+    "nats": "^1.4.12"
+  },
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1"
+  }
+}
