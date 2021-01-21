@@ -8,7 +8,7 @@ class Event {
     this.box = blessed.box({
       parent: this.screen,
       top: 0,
-      left: 80,
+      left: Math.floor(this.screen.width / 2) < 80 ? '50%' : 80,
       width: '100%',
       height: '100%',
       border: 'line',

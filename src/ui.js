@@ -24,8 +24,16 @@ class Ui {
   }
 
   _emit(event, payload) {
+    let shouldRender = false;
     if (this.callbacks[event]) {
-      this.callbacks[event].map((callback) => callback(payload));
+      const results = this.callbacks[event].map((callback) => callback(payload));
+      if (results.indexOf(true) !== -1) {
+        shouldRender = true;
+      }
+    }
+
+    if (shouldRender) {
+      this.screen.render();
     }
   }
 
@@ -34,6 +42,10 @@ class Ui {
     this.store.addEvent(name, payload);
 
     this._emit('eventReceived');
+  }
+
+  start() {
+    this.screen.render();
   }
 }
 

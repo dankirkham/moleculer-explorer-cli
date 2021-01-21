@@ -6,7 +6,7 @@ class Store {
     this.events = [];
     this.sortedEvents = [];
     this.selectedComponent = 'list';
-    this.selectedEventIndex = null;
+    this.selectedEventIndex = 0;
   }
 
   getEvent(name) {
@@ -20,6 +20,12 @@ class Store {
   addEvent(eventName, payload) {
     this.events[eventName] = JSON.stringify(payload, null, 2);
 
+    let selectedEventName;
+    if (this.sortedEvents.length >= 1) {
+      selectedEventName = this.getSelectedEvent().name;
+    } else {
+      selectedEventName = eventName;
+    }
     const events = Object.keys(this.events);
     const roots = events.map((name) => name.split('.').reduce((acc, val) => {
       if (acc.length === 0) {
@@ -30,6 +36,10 @@ class Store {
       return acc;
     }, []));
     this.sortedEvents = _.unique(events.concat(_.flatten(roots)).sort());
+
+    this.selectedEventIndex = this.sortedEvents.findIndex(
+      (name) => name === selectedEventName,
+    );
   }
 
   isSelected(component) {

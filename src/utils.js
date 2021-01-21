@@ -10,12 +10,12 @@ const moveIndex = (array, index, forward = true, wrap = true) => {
 
   if (forward) {
     newIndex += 1;
-    if (index >= array.length) {
+    if (newIndex >= array.length) {
       newIndex = wrap ? 0 : array.length - 1;
     }
   } else {
     newIndex -= 1;
-    if (index < 0) {
+    if (newIndex < 0) {
       newIndex = wrap ? array.length - 1 : 0;
     }
   }
